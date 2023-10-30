@@ -1,0 +1,52 @@
+/* Styles for card */
+.card{
+    height: 30vw;
+    width: 25vw;
+    max-width: 290px;
+    max-height: 360px;
+    min-width: 230px;
+    min-height: 280px;
+    background-color: rgb(126, 209, 209, 0.5);
+    margin: 5px;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Title */
+.title{
+  
+    text-align: center;
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
+}
+
+/* styles for carousel */
+.caraousel{
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    flex: 1;
+}
+
+/* styling for button */
+.buttons{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    /* flex: 1; */
+    
+    /* margin-bottom: 10px; */
+}
+
+.buttons div{
+    height: 25px;
+    width: 20px;
+    overflow: hidden;
+    margin: 10px;  
+    cursor: pointer;
+}
+
+.buttons div img{
+    height: 100%;
+    width: 100%;
+}
