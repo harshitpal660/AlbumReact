@@ -3,25 +3,84 @@ import trash from "../Icons/trash.png";
 import restore from "../Icons/history.png";
 import edit from "../Icons/edit.png";
 
-
 // card
-export const Card = ({ item, handleDeleteAction }) => {
-
+export const Card = ({
+  object,
+  handleDeleteAction,
+  handleDisplayEditModal,
+}) => {
+  // console.log(object);
   return (
     <>
       <div className={styles.card}>
         {/* UserName/Id */}
-        <div className={styles.title}>User {item.userId}</div>
+        <div className={styles.title}>User {object.userId}</div>
 
         {/* Carousel */}
         <div className={styles.caraousel}>
           <div
-            id={`carouselExampleInterval${item.userId}`}
+            id={`carouselExampleInterval${object.userId}`}
             class="carousel slide h-100"
             data-bs-ride="carousel"
           >
             <div class={`carousel-inner h-100 ${styles.caraouselInner}`}>
-              <div class={`carousel-item active h-100 ${styles.caraouselItem}`}>
+              {object.data.map((item, index) => {
+                {
+                  // console.log(index);
+                }
+                return (<div
+                  class={`carousel-item ${index===0 && "active"} h-100 ${styles.caraouselItem}`}
+                >
+                  <div className="d-flex flex-column h-100 justify-content-center text-center pt-5">
+                    {!item.delete ? (
+                      <>
+                        <div>Title {item.id}</div>
+                        <div>{item.title}</div>
+                      </>
+                    ) : (
+                      <>
+                        <del>
+                          <div>Title {item.id}</div>
+                          <div>{item.title}</div>
+                        </del>
+                      </>
+                    )}
+                    <div className="d-flex flex-column justify-content-end flex-fill">
+                      <div className={styles.buttons}>
+                        {!item.delete ? (
+                          <div>
+                            <img
+                              src={trash}
+                              alt="delete"
+                              onClick={() =>
+                                handleDeleteAction(object.userId, item.id)
+                              }
+                            ></img>
+                          </div>
+                        ) : (
+                          <div>
+                            <img
+                              src={restore}
+                              alt="restore"
+                              onClick={() =>
+                                handleDeleteAction(object.userId, item.id)
+                              }
+                            ></img>
+                          </div>
+                        )}
+                        <div
+                          onClick={() =>
+                            handleDisplayEditModal(object.userId, item.id)
+                          }
+                        >
+                          <img src={edit} alt="edit"></img>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>);
+              })}
+              {/* <div class={`carousel-item active h-100 ${styles.caraouselItem}`}>
                 <div className="d-flex flex-column h-100 justify-content-center text-center pt-5">
                   {!item.data[0].delete ? (
                     <>
@@ -57,7 +116,7 @@ export const Card = ({ item, handleDeleteAction }) => {
                           ></img>
                         </div>
                       )}
-                      <div>
+                      <div onClick={()=>handleDisplayEditModal(item.userId, item.data[0].id)}>
                         <img src={edit} alt="edit"></img>
                       </div>
                     </div>
@@ -100,7 +159,7 @@ export const Card = ({ item, handleDeleteAction }) => {
                           ></img>
                         </div>
                       )}
-                      <div>
+                      <div onClick={()=>handleDisplayEditModal(item.userId, item.data[1].id)}>
                         <img src={edit} alt="edit"></img>
                       </div>
                     </div>
@@ -143,7 +202,7 @@ export const Card = ({ item, handleDeleteAction }) => {
                           ></img>
                         </div>
                       )}
-                      <div>
+                      <div onClick={()=>handleDisplayEditModal(item.userId, item.data[2].id)}>
                         <img src={edit} alt="edit"></img>
                       </div>
                     </div>
@@ -186,7 +245,7 @@ export const Card = ({ item, handleDeleteAction }) => {
                           ></img>
                         </div>
                       )}
-                      <div>
+                      <div onClick={()=>handleDisplayEditModal(item.userId, item.data[3].id)}>
                         <img src={edit} alt="edit"></img>
                       </div>
                     </div>
@@ -229,7 +288,7 @@ export const Card = ({ item, handleDeleteAction }) => {
                           ></img>
                         </div>
                       )}
-                      <div>
+                      <div onClick={()=>handleDisplayEditModal(item.userId, item.data[4].id)}>
                         <img src={edit} alt="edit"></img>
                       </div>
                     </div>
@@ -272,7 +331,7 @@ export const Card = ({ item, handleDeleteAction }) => {
                           ></img>
                         </div>
                       )}
-                      <div>
+                      <div onClick={()=>handleDisplayEditModal(item.userId, item.data[5].id)}>
                         <img src={edit} alt="edit"></img>
                       </div>
                     </div>
@@ -315,7 +374,7 @@ export const Card = ({ item, handleDeleteAction }) => {
                           ></img>
                         </div>
                       )}
-                      <div>
+                      <div onClick={()=>handleDisplayEditModal(item.userId, item.data[6].id)}>
                         <img src={edit} alt="edit"></img>
                       </div>
                     </div>
@@ -358,7 +417,7 @@ export const Card = ({ item, handleDeleteAction }) => {
                           ></img>
                         </div>
                       )}
-                      <div>
+                      <div onClick={()=>handleDisplayEditModal(item.userId, item.data[7].id)}>
                         <img src={edit} alt="edit"></img>
                       </div>
                     </div>
@@ -401,7 +460,7 @@ export const Card = ({ item, handleDeleteAction }) => {
                           ></img>
                         </div>
                       )}
-                      <div>
+                      <div onClick={()=>handleDisplayEditModal(item.userId, item.data[8].id)}>
                         <img src={edit} alt="edit"></img>
                       </div>
                     </div>
@@ -444,18 +503,18 @@ export const Card = ({ item, handleDeleteAction }) => {
                           ></img>
                         </div>
                       )}
-                      <div>
+                      <div onClick={()=>handleDisplayEditModal(item.userId, item.data[9].id)}>
                         <img src={edit} alt="edit"></img>
                       </div>
                     </div>
                   </div>
                 </div>
-              </div>
+              </div> */}
             </div>
             <button
               class="carousel-control-prev"
               type="button"
-              data-bs-target={`#carouselExampleInterval${item.userId}`}
+              data-bs-target={`#carouselExampleInterval${object.userId}`}
               data-bs-slide="prev"
             >
               <span class="visually-hidden">Previous</span>
@@ -463,7 +522,7 @@ export const Card = ({ item, handleDeleteAction }) => {
             <button
               class="carousel-control-next"
               type="button"
-              data-bs-target={`#carouselExampleInterval${item.userId}`}
+              data-bs-target={`#carouselExampleInterval${object.userId}`}
               data-bs-slide="next"
             >
               <span class="visually-hidden">Next</span>

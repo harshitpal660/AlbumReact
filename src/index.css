@@ -1,20 +1,19 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
 
-
 /* App div contains all cards */
-.App{
+.App {
   width: 100%;
   height: 100%;
   overflow-y: scroll;
@@ -24,10 +23,13 @@ code {
   background-image: url("https://images5.alphacoders.com/132/1327980.png");
 }
 
-.Animation{
+/* animation for birds */
+.Animation {
   position: fixed;
 }
-.cardWrapper{
+
+/* card wrapper */
+.cardWrapper {
   width: 100%;
   height: 100%;
   display: flex;
@@ -36,22 +38,72 @@ code {
   justify-content: space-around;
   position: absolute;
   top: 50px;
-  
 }
 
-.createAlbum{
+/* create album  */
+.createAlbum {
   position: fixed;
   height: 50px;
   width: 100%;
   z-index: 10;
-  background-color: rgb(161, 57, 57,0.5);
+  background-color: rgb(161, 57, 57, 0.5);
   cursor: pointer;
   text-align: center;
   color: azure;
 }
 
-.createAlbum:hover{
-  background-color: rgb(61, 129, 153,0.8);
+/* create album button */
+.createAlbum:hover {
+  background-color: rgb(61, 129, 153, 0.8);
   font-size: larger;
+}
+
+/* edit form */
+.modalForm {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 100;
+  background-color: rgb(246,168,152,0.6);
+  display: flex;
+  flex-direction: column;
+  height: 300px;
+  width: 300px;
+  border-radius: 20px;
+  justify-content: center;
+}
+
+
+/* for blurring background when edit form opens */
+.blurr {
+  -webkit-filter: blur(4px);
+  -moz-filter: blur(4px);
+  -o-filter: blur(4px);
+  -ms-filter: blur(4px);
+  filter: blur(4px);
   
+}
+
+.inputWrapper{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.buttonWrapper{
+  flex-grow: 0.4;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+}
+
+/* ok and cancel button */
+.button{
+  cursor: pointer;
+  margin: 5px;
+  background-color: bisque;
+  padding: 3px;
+  width: 50px;
+  text-align: center;
 }
